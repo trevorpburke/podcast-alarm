@@ -1,10 +1,6 @@
 import urllib
 import feedparser
-import json
-import os
 from podcasts import podcasts
-
-podcast = os.environ.get("PODCAST")
 
 feed=feedparser.parse(f'https://www.npr.org/rss/podcast.php?id={str(podcasts[podcast])}')
 items = feed['entries']
