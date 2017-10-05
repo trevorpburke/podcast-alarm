@@ -17,11 +17,11 @@ podcast_url = items[0].links[0].href
 # download file and save to archive
 if os.path.isdir(f'archive/{podcast}'):
     urlretrieve(podcast_url, 
-                f'/home/tburke/podcast-alarm/archive/{podcast}/{podcast_name}.mp3')
+                f'/archive/{podcast}/{podcast_name}.mp3')
 else:
     os.mkdir(f'archive/{podcast}')
     urlretrieve(podcast_url,
-                f'/home/tburke/podcast-alarm/archive/{podcast}/{podcast_name}.mp3')
+                f'/archive/{podcast}/{podcast_name}.mp3')
 
 print(f'Downloaded {podcast_name} from {podcast}')
 
