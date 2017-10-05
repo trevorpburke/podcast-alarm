@@ -2,7 +2,8 @@ import sys
 import os
 from urllib.request import urlretrieve
 import feedparser
-from pygame import mixer
+import pygame
+
 from podcasts import podcasts
 
 # Use quotes around argument
@@ -22,12 +23,19 @@ else:
     urlretrieve(podcast_url,
                 f'/home/tburke/podcast-alarm/archive/{podcast}/{podcast_name}.mp3')
 
-# TODO play mp3
+print(f'Downloaded {podcast_name} from {podcast}')
 
-def play_podcast(podcast):
-    mixer.init()
-    mixer.music.play(f'archive/{podcast}/{podcast_name}.mp3')
-    mixer.music.stop()
+# pygame package plays mp3 
+def play():
+    pygame.init()
+    pygame.mixer.music.load(f'archive/{podcast}/{podcast_name}.mp3')
+    pygame.mixer.music.play(0)
+
+    clock = pygame.time.Clock()
+    clock.tick(10)
+    while pygame.mixer.music.get_busy():
+        pygame.event.poll()
+        clock.tick(10)
 
 if __name__ == '__main__':
-    play_podcast(podcast)
+    play()
