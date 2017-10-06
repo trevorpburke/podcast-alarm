@@ -27,14 +27,11 @@ def play(podcast, podcast_ep):
         clock.tick(10)
 
 # download file and save to archive
-if os.path.isdir(f'archive/{podcast}'):
-    urlretrieve(podcast_url, 
-               f'archive/{podcast}/{podcast_ep}.mp3')
-    play(podcast, podcast_ep)
-else:
-    os.mkdir(f'archive/{podcast}')
-    urlretrieve(podcast_url,
-                f'archive/{podcast}/{podcast_ep}.mp3')
+
+def main():
+    os.mkdir(f"archive/{podcast}", exist_ok=True)
+    urlretrieve(podcast_url, f"archive/{podcast}/{podcast_ep}.mp3")
     play(podcast, podcast_ep)
 
-
+if __name__ == '__main__':
+    main()
