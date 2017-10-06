@@ -29,7 +29,7 @@ def play(podcast, podcast_ep):
 # download file and save to archive
 
 def main():
-    os.mkdir(f"archive/{podcast}", exist_ok=True)
+    os.makedirs(f"archive/{podcast}", exist_ok=True)
     urlretrieve(podcast_url, f"archive/{podcast}/{podcast_ep}.mp3")
     play(podcast, podcast_ep)
 
