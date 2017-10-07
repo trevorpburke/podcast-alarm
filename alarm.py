@@ -9,15 +9,15 @@ from podcasts import podcasts
 # Use quotes around argument
 podcast = sys.argv[1]
 
-feed = feedparser.parse(f"https://www.npr.org/rss/podcast.php?id={podcasts[podcast]}")
+feed = feedparser.parse(f'https://www.npr.org/rss/podcast.php?id={podcasts[podcast]}')
 items = feed['entries']
 podcast_ep = items[0].title
 podcast_url = items[0].links[0].href
 
 def play(podcast, podcast_ep):
-    '''Plays mp3 files'''
+    """Plays mp3 files"""
     pygame.init()
-    pygame.mixer.music.load(f"archive/{podcast}/{podcast_ep}.mp3")
+    pygame.mixer.music.load(f'archive/{podcast}/{podcast_ep}.mp3')
     pygame.mixer.music.play(0)
 
     clock = pygame.time.Clock()
@@ -29,8 +29,8 @@ def play(podcast, podcast_ep):
 # download file and save to archive
 
 def main():
-    os.makedirs(f"archive/{podcast}", exist_ok=True)
-    urlretrieve(podcast_url, f"archive/{podcast}/{podcast_ep}.mp3")
+    os.makedirs(f'archive/{podcast}', exist_ok=True)
+    urlretrieve(podcast_url, f'archive/{podcast}/{podcast_ep}.mp3')
     play(podcast, podcast_ep)
 
 if __name__ == '__main__':
