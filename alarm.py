@@ -17,7 +17,8 @@ podcast_url = items[0].links[0].href
 def play(podcast, podcast_ep):
     """Plays mp3 files"""
     pygame.init()
-    pygame.mixer.music.load(f'archive/{podcast}/{podcast_ep}.mp3')
+    pygame.mixer.music.load(os.path.join('archive', f'{podcast}',
+                                         f'{podcast_ep}.mp3'))
     pygame.mixer.music.play(0)
 
     clock = pygame.time.Clock()
@@ -29,8 +30,9 @@ def play(podcast, podcast_ep):
 # download file and save to archive
 
 def main():
-    os.makedirs(f'archive/{podcast}', exist_ok=True)
-    urlretrieve(podcast_url, f'archive/{podcast}/{podcast_ep}.mp3')
+    os.makedirs(os.path.join('archive', f'{podcast}', exist_ok=True))
+    urlretrieve(podcast_url, 
+                os.path.join('archive','f{podcast}',f'{podcast_ep}.mp3'))
     play(podcast, podcast_ep)
 
 if __name__ == '__main__':
