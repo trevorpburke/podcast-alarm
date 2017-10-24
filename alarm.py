@@ -30,9 +30,9 @@ def play(podcast, podcast_ep):
 # download file and save to archive
 
 def main():
-    os.makedirs(os.path.join('archive', f'{podcast}', exist_ok=True))
+    os.makedirs(os.path.join('archive', f'{podcast}'), exist_ok=True)
     urlretrieve(podcast_url, 
-                os.path.join('archive','f{podcast}',f'{podcast_ep}.mp3'))
+                os.path.join('archive',f'{podcast}',f'{podcast_ep}.mp3'))
     play(podcast, podcast_ep)
 
 if __name__ == '__main__':
